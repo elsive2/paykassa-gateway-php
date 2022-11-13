@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Dto\CurrencyRateDto;
 use App\Dto\InstantPaymentDto;
 use App\Dto\PaymentDto;
 use App\Enums\SystemEnum;
@@ -93,8 +94,18 @@ class PaykassaService
         );
         
         if ($response['error'])
-            return ['error' => $response['message']];
-    
-        return ['data' => $response['data']];   
+        return ['error' => $response['message']];
+
+    return ['data' => $response['data']];   
+    }
+
+    public function getBalance()
+    {
+        return $this->payKassaApi->api_get_shop_balance(config('app.paykassa_sci_id'));
+    }
+
+    public function getCurrencyRate(CurrencyRateDto $data)
+    {
+        return $this->payKassaApi->api_currency_rate($data->currency_in, $data->currency_out);
     }
 }

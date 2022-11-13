@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dto\PaymentDto;
 use App\Enums\SystemEnum;
+use App\Http\Requests\CurrencyRateRequest;
 use App\Http\Requests\InstantPaymentRequest;
 use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\PrivateHashRequest;
@@ -41,5 +42,15 @@ class PaykassaController extends Controller
     public function instantPayment(InstantPaymentRequest $request)
     {
         return $this->paykassaService->instantPayment($request->getDto());
+    }
+
+    public function getBalance()
+    {
+        return $this->paykassaService->getBalance();
+    }
+
+    public function getCurrencyRate(CurrencyRateRequest $request)
+    {
+        return $this->paykassaService->getCurrencyRate($request->getDto());
     }
 }

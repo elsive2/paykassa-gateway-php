@@ -137,6 +137,12 @@ class PayKassaAPI {
             ] + compact($fields));
     }
 
+    public function api_currency_rate($currency_in, $currency_out)
+    {
+        $fields = ["currency_in", "currency_out"];
+        return $this->query('https://currency.paykassa.pro/index.php', compact($fields));
+    }
+
     public function format_btc($money) {
         return sprintf("%01.8f", $money);
     }

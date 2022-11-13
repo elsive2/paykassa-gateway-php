@@ -24,3 +24,5 @@ Route::post('payment', [PaykassaController::class, 'invoiceForPayment']);
 Route::post('check-payment', [PaykassaController::class, 'checkPayment']);
 Route::post('notifications', [PaykassaController::class, 'notificationsForTransactions']);
 Route::post('instant-payment', [PaykassaController::class, 'instantPayment']);
+Route::post('balance', [PaykassaController::class, 'getBalance']);
+Route::post('currency-rate', [PaykassaController::class, 'getCurrencyRate']);
